@@ -1,2 +1,2 @@
 # pizza-to-you
-Pizza to you api
+This is the repository for the pizza to you api
