@@ -12,7 +12,7 @@ public class Order {
     private double cost;
     private List<Pizza> pizzas;
     private Instant orderDate;
-    private String userId;
+    private String sessionId;
     private String shopId;
     private OrderStatus status;
 
@@ -20,7 +20,7 @@ public class Order {
                              double cost,
                              List<Pizza> pizzas,
                              Instant orderDate,
-                             String customerId,
+                             String sessionId,
                              String shopId,
                              OrderStatus status) {
 
@@ -29,7 +29,7 @@ public class Order {
         o.setCost(cost);
         o.setPizzas(pizzas);
         o.setOrderDate(orderDate);
-        o.setUserId(customerId);
+        o.setSessionId(sessionId);
         o.setShopId(shopId);
         o.setStatus(status);
 

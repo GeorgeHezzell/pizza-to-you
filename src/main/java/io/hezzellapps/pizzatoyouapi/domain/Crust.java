@@ -1,19 +1,22 @@
 package io.hezzellapps.pizzatoyouapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Data;
 
-@Data
-public class Crust {
 
-    private String id;
-    private String name;
+public enum Crust {
 
-    public static Crust from(String id,
-                             String name) {
-        var c = new Crust();
-        c.setId(id);
-        c.setName(name);
+    CLASSIC("Classic"), THIN("Thin"), THICK("Thick");
 
-        return c;
+    private String text;
+
+    Crust( String text) {
+
+        this.text = text;
+    }
+
+    @JsonValue
+    public String getText() {
+        return text;
     }
 }

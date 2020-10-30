@@ -1,20 +1,21 @@
 package io.hezzellapps.pizzatoyouapi.domain;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-@Data
-public class Base {
+public enum Base {
 
-    private String id;
-    private String name;
 
-    public static Base from(String id,
-                            String name) {
-        var b = new Base();
-        b.setId(id);
-        b.setName(name);
+    TOMATO( "Tomato"), BARBEQUE("Barbeque");
 
-        return b;
+    private String text;
+
+    Base(String text) {
+        this.text = text;
+    }
+
+    @JsonValue
+    public String getText() {
+        return text;
     }
 
 }

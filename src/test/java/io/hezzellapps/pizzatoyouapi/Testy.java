@@ -36,16 +36,16 @@ public class Testy {
                         "Large Pepperoni",
                         Arrays.asList(Topping.from(UUID.randomUUID().toString(), "Pepperoni", false, SpiceRating.MILD)),
                         12,
-                        Base.from(UUID.randomUUID().toString(), "Tomato"),
-                        Crust.from(UUID.randomUUID().toString(), "Classic")),
-                        Pizza.from(UUID.randomUUID().toString(),
-                                "Large Chicken",
-                                Arrays.asList(Topping.from(UUID.randomUUID().toString(), "Chicken", false, SpiceRating.MILD)),
-                                12,
-                                Base.from(UUID.randomUUID().toString(), "Tomato"),
-                                Crust.from(UUID.randomUUID().toString(), "Classic")
-                        )
-                ));
+                        Base.TOMATO,
+                        Crust.CLASSIC),
+                Pizza.from(UUID.randomUUID().toString(),
+                        "Large Chicken",
+                        Arrays.asList(Topping.from(UUID.randomUUID().toString(), "Chicken", false, SpiceRating.MILD)),
+                        12,
+                        Base.TOMATO,
+                        Crust.CLASSIC)
+
+        ));
 
         var order = new Order();
         order.setId(UUID.randomUUID().toString());
@@ -55,16 +55,16 @@ public class Testy {
                         "Large Pepperoni",
                         Arrays.asList(Topping.from(UUID.randomUUID().toString(), "Pepperoni", false, SpiceRating.MILD)),
                         12,
-                        Base.from(UUID.randomUUID().toString(), "Tomato"),
-                        Crust.from(UUID.randomUUID().toString(), "Classic")),
-                Pizza.from(UUID.randomUUID().toString(),
-                        "Large Chicken",
-                        Arrays.asList(Topping.from(UUID.randomUUID().toString(), "Chicken", false, SpiceRating.MILD)),
-                        12,
-                        Base.from(UUID.randomUUID().toString(), "Tomato"),
-                        Crust.from(UUID.randomUUID().toString(), "Classic")
-                )
-        ));
+                        Base.TOMATO,
+                        Crust.CLASSIC),
+                        Pizza.from(UUID.randomUUID().toString(),
+                                "Large Chicken",
+                                Arrays.asList(Topping.from(UUID.randomUUID().toString(), "Chicken", false, SpiceRating.MILD)),
+                                12,
+                                Base.TOMATO,
+                                Crust.CLASSIC
+                                )
+                ));
         order.setUserId(UUID.randomUUID().toString());
         order.setShopId(UUID.randomUUID().toString());
         order.setStatus(OrderStatus.DELIVERED);
@@ -79,10 +79,10 @@ public class Testy {
                                 "Large Pepperoni",
                                 Arrays.asList(Topping.from(UUID.randomUUID().toString(), "Pepperoni", false, SpiceRating.MILD)),
                                 12,
-                                Base.from(UUID.randomUUID().toString(), "Tomato"),
-                                Crust.from(UUID.randomUUID().toString(), "Classic")))
-                )
-        );
+                                Base.TOMATO,
+                                Crust.CLASSIC )
+                        )
+                ));
 
 
         var om = new ObjectMapper();
