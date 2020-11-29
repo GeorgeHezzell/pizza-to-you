@@ -1,5 +1,10 @@
 package server;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -15,10 +20,14 @@ public class Main {
 
     public static Connection db = null;
 
+    public static ObjectMapper om = null;
+
     public static void main(String[] args) {
 
         openDatabase("pizzatoyou.db");                     //connect to our database file, when you stop the server the connection to the database
         // is closed and you can access it through SQLite Studio
+
+        configureObjectMapper();
 
         ResourceConfig config = new ResourceConfig();       // prepare our Jersey Servlet, 'Servlet' is a Java program that runs on a Java-enabled web servers.
         // Jersey is our Servlet Library, Jetty is our Server Library
@@ -51,5 +60,15 @@ public class Main {
         } catch (Exception exception) {
             System.out.println("Database connection error: " + exception.getMessage());
         }
+    }
+
+    public static void configureObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        JavaTimeModule module = new JavaTimeModule();
+        mapper.registerModule(module);
+        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        om = mapper;
     }
 }

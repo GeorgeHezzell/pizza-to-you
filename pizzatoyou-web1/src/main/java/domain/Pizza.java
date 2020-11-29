@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 public class Pizza {
 
-    private String id;
+    private int id;
     private String name;
     private List<Topping> toppings;
     private int inches;
@@ -15,7 +15,7 @@ public class Pizza {
     private Crust crust;
 
     public static Pizza from(
-            String id,
+            int id,
             String name,
             List<Topping> toppings,
             int inches,
@@ -31,6 +31,16 @@ public class Pizza {
 
         return p;
 
+    }
+
+    public static Pizza from(
+            int id,
+            String name){
+        var p = new Pizza();
+        p.setId(id);
+        p.setName(name);
+
+        return p;
     }
 
 }
